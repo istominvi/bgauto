@@ -9,10 +9,10 @@ export function Footer() {
           {/* Logo - fixed size, no shrinking */}
           <Link href="/" className="flex-shrink-0">
             <Image
-              src="/images/1-2.png"
+              src="/images/logo_footer.png"
               alt="BG AUTO"
-              width={120}
-              height={40}
+              width={100}
+              height={22}
               className="h-8 w-auto"
             />
           </Link>
