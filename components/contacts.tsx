@@ -90,45 +90,6 @@ export function Contacts() {
               <h3 className="text-xl font-semibold text-foreground mb-6">Быстрая связь</h3>
               
               <div className="space-y-6">
-                {/* Reasons to follow */}
-                <div className="space-y-3">
-                  {reasons.map((reason, index) => (
-                    <div
-                      key={index}
-                      className="flex items-start gap-3 p-3 bg-secondary/50 rounded-lg"
-                    >
-                      <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <reason.icon className="h-4 w-4 text-primary" />
-                      </div>
-                      <span className="text-sm text-foreground">{reason.text}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Messengers */}
-                <div className="space-y-3">
-                  <Button
-                    asChild
-                    className="w-full bg-[#0077FF] hover:bg-[#0077FF]/90 text-white gap-2"
-                  >
-                    <a href="https://vk.com/bg_auto_chita" target="_blank" rel="noopener noreferrer">
-                      <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.408 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4 8.572 4 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.847 2.49 2.271 4.675 2.856 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.15-3.574 2.15-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.744-.576.744z"/>
-                      </svg>
-                      VK
-                    </a>
-                  </Button>
-                  <Button
-                    asChild
-                    className="w-full bg-[#0088cc] hover:bg-[#0088cc]/90 text-white gap-2"
-                  >
-                    <a href="https://t.me/bg_auto_zakaz_chita" target="_blank" rel="noopener noreferrer">
-                      <Send className="h-5 w-5" />
-                      Telegram
-                    </a>
-                  </Button>
-                </div>
-
                 {/* Phones */}
                 <div>
                   <h4 className="text-sm font-medium text-muted-foreground mb-3">Телефоны</h4>
@@ -146,14 +107,50 @@ export function Contacts() {
                   </div>
                 </div>
 
-                {/* Working Hours */}
-                <div className="flex items-start gap-3 p-4 bg-secondary/50 rounded-lg">
-                  <Clock className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                  <div>
-                    <div className="font-medium text-foreground">Режим работы</div>
-                    <div className="text-sm text-muted-foreground">c 09:00 до 19:00, воскресенье - выходной</div>
+                {/* Social Networks */}
+                <div>
+                  <h4 className="text-sm font-medium text-muted-foreground mb-3">Соцсети</h4>
+                  
+                {/* Reasons to follow */}
+                <div className="space-y-3">
+                    {reasons.map((reason, index) => (
+                      <div
+                        key={index}
+                        className="flex items-start gap-3 p-3 bg-secondary/50 rounded-lg"
+                      >
+                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <reason.icon className="h-4 w-4 text-primary" />
+                        </div>
+                        <span className="text-sm text-foreground">{reason.text}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Messengers */}
+                  <div className="space-y-3 mt-3">
+                    <Button
+                      asChild
+                      className="w-full bg-[#0077FF] hover:bg-[#0077FF]/90 text-white gap-2"
+                    >
+                      <a href="https://vk.com/bg_auto_chita" target="_blank" rel="noopener noreferrer">
+                        <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M15.684 0H8.316C1.592 0 0 1.592 0 8.316v7.368C0 22.408 1.592 24 8.316 24h7.368C22.408 24 24 22.408 24 15.684V8.316C24 1.592 22.408 0 15.684 0zm3.692 17.123h-1.744c-.66 0-.864-.525-2.05-1.727-1.033-1-1.49-1.135-1.744-1.135-.356 0-.458.102-.458.593v1.575c0 .424-.135.678-1.253.678-1.846 0-3.896-1.118-5.335-3.202C4.624 10.857 4 8.572 4 8.096c0-.254.102-.491.593-.491h1.744c.44 0 .61.203.78.677.847 2.49 2.271 4.675 2.856 4.675.22 0 .322-.102.322-.66V9.721c-.068-1.186-.695-1.287-.695-1.71 0-.203.17-.407.44-.407h2.744c.373 0 .508.203.508.643v3.473c0 .372.17.508.271.508.22 0 .407-.136.813-.542 1.254-1.406 2.15-3.574 2.15-3.574.119-.254.322-.491.763-.491h1.744c.525 0 .644.27.525.643-.22 1.017-2.354 4.031-2.354 4.031-.186.305-.254.44 0 .78.186.254.796.779 1.203 1.253.745.847 1.32 1.558 1.473 2.05.17.49-.085.744-.576.744z"/>
+                        </svg>
+                        VK
+                      </a>
+                    </Button>
+                    <Button
+                      asChild
+                      className="w-full bg-[#0088cc] hover:bg-[#0088cc]/90 text-white gap-2"
+                    >
+                      <a href="https://t.me/bg_auto_zakaz_chita" target="_blank" rel="noopener noreferrer">
+                        <Send className="h-5 w-5" />
+                        Telegram
+                      </a>
+                    </Button>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
