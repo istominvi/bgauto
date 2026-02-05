@@ -42,7 +42,7 @@
 
 @theme inline {
   --font-sans: 'Inter', 'Inter Fallback', sans-serif;
-  --font-display: 'Oswald', 'Oswald Fallback', sans-serif;
+  --font-display: 'Inter', 'Inter Fallback', sans-serif;
   --font-mono: 'Geist Mono', 'Geist Mono Fallback';
   --color-background: var(--background);
   --color-foreground: var(--foreground);
