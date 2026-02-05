@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { MapPin, Phone, Clock, Send } from "lucide-react"
+import { MapPin, Phone, Clock, Send, Gift, Star, MessageSquare, TrendingUp } from "lucide-react"
 
 const offices = [
   {
@@ -47,6 +47,25 @@ const phones = [
   "21-00-04",
 ]
 
+const reasons = [
+  {
+    icon: TrendingUp,
+    text: "Актуальные обзоры моделей и цен",
+  },
+  {
+    icon: Gift,
+    text: "Эксклюзивные предложения и скидки для подписчиков",
+  },
+  {
+    icon: MessageSquare,
+    text: "Реальные истории успеха и отзывы клиентов",
+  },
+  {
+    icon: Star,
+    text: "Возможность выиграть новый автомобиль (розыгрыши в закрепе)",
+  },
+]
+
 export function Contacts() {
   return (
     <section id="contacts" className="py-20 md:py-32 bg-secondary/30">
@@ -71,6 +90,21 @@ export function Contacts() {
               <h3 className="text-xl font-semibold text-foreground mb-6">Быстрая связь</h3>
               
               <div className="space-y-6">
+                {/* Reasons to follow */}
+                <div className="space-y-3">
+                  {reasons.map((reason, index) => (
+                    <div
+                      key={index}
+                      className="flex items-start gap-3 p-3 bg-secondary/50 rounded-lg"
+                    >
+                      <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <reason.icon className="h-4 w-4 text-primary" />
+                      </div>
+                      <span className="text-sm text-foreground">{reason.text}</span>
+                    </div>
+                  ))}
+                </div>
+
                 {/* Messengers */}
                 <div className="space-y-3">
                   <Button
