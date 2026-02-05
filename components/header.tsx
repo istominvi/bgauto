@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Menu, X, Phone } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const navLinks = [
@@ -48,11 +48,7 @@ export function Header() {
           </nav>
 
           {/* Desktop CTA - visible only on xl+ */}
-          <div className="hidden xl:flex items-center gap-4 flex-shrink-0">
-            <a href="tel:+79145192862" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap">
-              <Phone className="h-4 w-4" />
-              +7 (914) 519-28-62
-            </a>
+          <div className="hidden xl:flex items-center flex-shrink-0">
             <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground whitespace-nowrap">
               <a href="https://t.me/bg_auto_zakaz_chita" target="_blank" rel="noopener noreferrer">
                 Написать в Telegram
@@ -85,10 +81,6 @@ export function Header() {
                 {link.label}
               </Link>
             ))}
-            <a href="tel:+79145192862" className="flex items-center gap-2 text-base text-muted-foreground hover:text-foreground transition-colors py-2">
-              <Phone className="h-5 w-5" />
-              +7 (914) 519-28-62
-            </a>
             <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground mt-2">
               <a href="https://t.me/bg_auto_zakaz_chita" target="_blank" rel="noopener noreferrer">
                 Написать в Telegram
