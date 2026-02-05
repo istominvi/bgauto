@@ -39,7 +39,7 @@ export function About() {
           <div className="relative">
             <div className="relative overflow-hidden rounded-lg border border-border">
               <Image
-                src="/images/team.png"
+                src="/bgauto/images/team.png"
                 alt="Команда BG AUTO"
                 width={800}
                 height={600}

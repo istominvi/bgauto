@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 const cases = [
   {
     id: 1,
-    image: "/images/case-1.jpg",
+    image: "/bgauto/images/case-1.jpg",
     title: "Toyota Harrier",
     year: 2021,
     client: "клиентке из Улан-Удэ",
@@ -22,7 +22,7 @@ const cases = [
   },
   {
     id: 2,
-    image: "/images/case-2.jpg",
+    image: "/bgauto/images/case-2.jpg",
     title: "Toyota RAV4",
     year: 2020,
     client: "клиенту Алексею из Улан-Удэ",
@@ -36,7 +36,7 @@ const cases = [
   },
   {
     id: 3,
-    image: "/images/case-3.jpg",
+    image: "/bgauto/images/case-3.jpg",
     title: "Lexus RX 350",
     year: 2022,
     client: "клиенту из Читы",
@@ -50,7 +50,7 @@ const cases = [
   },
   {
     id: 4,
-    image: "/images/case-4.jpg",
+    image: "/bgauto/images/case-4.jpg",
     title: "Honda CR-V",
     year: 2021,
     client: "клиенту из Иркутска",
@@ -64,7 +64,7 @@ const cases = [
   },
   {
     id: 5,
-    image: "/images/case-5.jpg",
+    image: "/bgauto/images/case-5.jpg",
     title: "Mazda CX-5",
     year: 2022,
     client: "клиентке Анне из Читы",
@@ -78,7 +78,7 @@ const cases = [
   },
   {
     id: 6,
-    image: "/images/case-6.jpg",
+    image: "/bgauto/images/case-6.jpg",
     title: "Toyota Camry",
     year: 2021,
     client: "клиенту из Улан-Удэ",
