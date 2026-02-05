@@ -1,11 +1,10 @@
 import React from "react"
 import type { Metadata } from 'next'
-import { Inter, Oswald } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
 const _inter = Inter({ subsets: ["latin", "cyrillic"] });
-const _oswald = Oswald({ subsets: ["latin", "cyrillic"] });
 
 export const metadata: Metadata = {
   title: 'BG AUTO - Авто под заказ | Япония, Корея, Китай',
