@@ -35,14 +35,14 @@ export function Hero() {
 
           {/* Main headline */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6" style={{ fontFamily: 'var(--font-display)' }}>
-            <span className="text-foreground">Задайте вопрос</span>
+            <span className="text-foreground">Честная доставка автомобилей</span>
             <br />
-            <span className="text-primary">прямо сейчас</span>
+            <span className="text-primary">из Японии, Кореи и Китая под ключ</span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
-            Автомобили под заказ с аукционов Японии, Кореи и Китая.
+            Ваш идеальный автомобиль с аукционов на 20-30% дешевле рынка РФ
             <br className="hidden md:block" />
             <span className="text-foreground font-semibold">Выгода от 300 000 рублей</span>
           </p>

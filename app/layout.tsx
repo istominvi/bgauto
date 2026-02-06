@@ -7,25 +7,12 @@ import { BackgroundBeams } from "@/components/background-beams"
 const _inter = Inter({ subsets: ["latin", "cyrillic"] });
 
 export const metadata: Metadata = {
-  title: 'BG AUTO - Авто под заказ | Япония, Корея, Китай',
-  description: 'Автомобили под заказ с аукционов Японии, Кореи и Китая. Выгода от 300 000 рублей. Полное сопровождение сделки.',
+  title: 'BG AUTO - Честная доставка автомобилей из Японии, Кореи и Китая под ключ',
+  description: 'Ваш идеальный автомобиль с аукционов на 20-30% дешевле рынка РФ. Выгода от 300 000 рублей. Полное сопровождение сделки.',
   generator: 'v0.app',
   icons: {
-    icon: [
-      {
-        url: '/bgauto/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/bgauto/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/bgauto/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/bgauto/apple-icon.png',
+    icon: '/bgauto/images/favicon.png',
+    apple: '/bgauto/images/favicon.png',
   },
 }
 
