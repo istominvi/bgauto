@@ -48,6 +48,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Fetch cases data from Google Sheets
+        run: node scripts/fetch-cases.js
+
       - name: Build
         run: pnpm build
 
