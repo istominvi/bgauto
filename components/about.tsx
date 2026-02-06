@@ -15,7 +15,7 @@ export function About() {
         {/* Main Content */}
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-16">
           {/* Text Content */}
-          <div>
+          <div className="bg-black/50 p-6 md:p-10 rounded-2xl backdrop-blur-sm border border-white/10">
             <span className="inline-block text-primary text-sm font-semibold tracking-wider uppercase mb-4">
               О компании
             </span>

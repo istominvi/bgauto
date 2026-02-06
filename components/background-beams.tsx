@@ -15,7 +15,7 @@ export function BackgroundBeams() {
   const [beams, setBeams] = useState<Beam[]>([])
 
   useEffect(() => {
-    const beamCount = 12 // Increased for better visibility
+    const beamCount = 6 // Reduced as requested
     const newBeams = Array.from({ length: beamCount }).map((_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
