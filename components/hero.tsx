@@ -43,7 +43,7 @@ export function Hero() {
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
             Ваш автомобиль с аукционов на 20-30% дешевле рынка
-            <br className="hidden md:block" />
+            <br />
             <span className="text-foreground font-semibold">Выгода от 300 000 рублей</span>
           </p>
 
