@@ -5,7 +5,6 @@ import React, { useEffect, useState } from "react"
 interface Beam {
   id: number
   left: string
-  top: string
   rotate: string
   duration: string
   delay: string
@@ -19,7 +18,6 @@ export function BackgroundBeams() {
     const newBeams = Array.from({ length: beamCount }).map((_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
       rotate: `${Math.random() * 360}deg`,
       duration: `${15 + Math.random() * 20}s`,
       delay: `${-Math.random() * 20}s`,
