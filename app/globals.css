@@ -91,7 +91,7 @@
   }
 }
 
-@keyframes beam-float {
+@keyframes bg-beam-float {
   0% {
     transform: rotate(var(--beam-rotate, 0deg)) translateY(-10%) translateX(-10%);
     opacity: 0;
@@ -108,6 +108,6 @@
   }
 }
 
-.animate-beam-float {
-  animation: beam-float linear infinite;
+.animate-bg-beam-float {
+  animation: bg-beam-float linear infinite;
 }

@@ -15,7 +15,7 @@ export function BackgroundBeams() {
   const [beams, setBeams] = useState<Beam[]>([])
 
   useEffect(() => {
-    const beamCount = 6
+    const beamCount = 12 // Increased for better visibility
     const newBeams = Array.from({ length: beamCount }).map((_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
@@ -33,14 +33,17 @@ export function BackgroundBeams() {
         {beams.map((beam) => (
           <div
             key={beam.id}
-            className="absolute w-[2px] h-[150%] bg-gradient-to-b from-transparent via-primary to-transparent animate-beam-float shadow-[0_0_20px_rgba(234,40,40,0.8)]"
-            style={{
-              left: beam.left,
-              top: "-25%",
-              "--beam-rotate": beam.rotate,
-              animationDuration: beam.duration,
-              animationDelay: beam.delay,
-            } as React.CSSProperties}
+            className="absolute w-[2px] h-[150%] bg-gradient-to-b from-transparent via-primary to-transparent animate-bg-beam-float shadow-[0_0_25px_rgba(234,40,40,0.9)]"
+            style={
+              {
+                left: beam.left,
+                top: "-25%",
+                transform: `rotate(${beam.rotate})`,
+                animationDuration: beam.duration,
+                animationDelay: beam.delay,
+                "--beam-rotate": beam.rotate,
+              } as React.CSSProperties
+            }
           />
         ))}
       </div>
