@@ -52,8 +52,16 @@ function convertCsvToJson(csvText) {
 function downloadCsv(url) {
   return new Promise((resolve, reject) => {
     https.get(url, (response) => {
-      let content = '';
+      if (response.statusCode >= 300 && response.statusCode < 400 && response.headers.location) {
+        console.log(`Following redirect to ${response.headers.location}`);
+        return resolve(downloadCsv(response.headers.location));
+      }
       
+      if (response.statusCode !== 200) {
+        return reject(new Error(`Failed to download CSV: ${response.statusCode}`));
+      }
+
+      let content = '';
       response.on('data', (chunk) => {
         content += chunk;
       });
@@ -67,6 +75,27 @@ function downloadCsv(url) {
   });
 }
 
+function getGoogleDriveDirectLink(url) {
+  if (!url) return '/placeholder.svg';
+  if (url.includes('drive.google.com') || url.includes('drive.usercontent.google.com')) {
+    try {
+      // Handle /d/ID/ format
+      const dMatch = url.match(/\/d\/([^/?]+)/);
+      if (dMatch && dMatch[1]) {
+        return `https://drive.google.com/uc?id=${dMatch[1]}`;
+      }
+      // Handle ?id=ID format
+      const idMatch = url.match(/[?&]id=([^&]+)/);
+      if (idMatch && idMatch[1]) {
+        return `https://drive.google.com/uc?id=${idMatch[1]}`;
+      }
+    } catch (e) {
+      console.warn('Failed to parse Google Drive URL:', url);
+    }
+  }
+  return url;
+}
+
 async function fetchAndSaveCases() {
   try {
     console.log('Downloading CSV data from Google Sheets...');
@@ -75,20 +104,47 @@ async function fetchAndSaveCases() {
     console.log('Converting CSV to JSON...');
     const rawData = convertCsvToJson(csvContent);
     
-    const casesData = rawData.map((row, idx) => ({
-      id: idx + 1,
-      image: row.image || '/placeholder.svg',
-      title: row.title || '',
-      year: parseInt(row.year) || 0,
-      client: row.client || '',
-      engine: row.engine || '',
-      mileage: row.mileage || '',
-      condition: row.condition || '',
-      price: row.price || '',
-      priceNote: row.priceNote || '',
-      country: row.country || '',
-      date: row.date || '',
-    }));
+    const casesData = rawData.map((row, idx) => {
+      // Mapping from Russian or English headers
+      const rawTitle = row['Автомобиль'] || row['title'] || '';
+      const carInfo = rawTitle.split(',');
+      const title = carInfo[0] ? carInfo[0].trim() : '';
+
+      let year = 0;
+      if (carInfo[1]) {
+        year = parseInt(carInfo[1].trim()) || 0;
+      } else {
+        year = parseInt(row['year']) || 0;
+      }
+
+      let client = row['Кому'] || row['client'] || '';
+      if (client.startsWith('Выдали ')) {
+        client = client.replace('Выдали ', '');
+      }
+
+      let price = row['Стоимость'] || row['Цена'] || row['price'] || '';
+      // Remove all non-digit characters to normalize
+      const numericPrice = price.replace(/\D/g, '');
+      if (numericPrice) {
+        // Format with spaces for Russian standard: 2320000 -> 2 320 000
+        price = parseInt(numericPrice).toLocaleString('ru-RU').replace(/\s/g, ' ');
+      }
+
+      return {
+        id: idx + 1,
+        image: getGoogleDriveDirectLink(row['Фото'] || row['image']),
+        title: title,
+        year: year,
+        client: client,
+        engine: row['Двигатель'] || row['engine'] || '',
+        mileage: row['Пробег'] || row['mileage'] || '',
+        condition: row['Состояние'] || row['condition'] || '',
+        price: price,
+        priceNote: row['priceNote'] || '',
+        country: row['Страна'] || row['country'] || '',
+        date: row['Дата'] || row['date'] || '',
+      };
+    }).filter(item => item.title !== '');
     
     const outputDir = path.join(__dirname, '../data');
     if (!fs.existsSync(outputDir)) {
