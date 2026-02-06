@@ -29,7 +29,7 @@ export function BackgroundBeams() {
 
   return (
     <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-background">
-      <div className="absolute inset-0 opacity-40">
+      <div className="absolute inset-0 opacity-60">
         {beams.map((beam) => (
           <div
             key={beam.id}

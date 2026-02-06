@@ -1,5 +1,3 @@
-import { Header } from "@/components/header"
-import { BackgroundBeams } from "@/components/background-beams"
 import { Hero } from "@/components/hero"
 import { About } from "@/components/about"
 import { Cases } from "@/components/cases"
@@ -23,7 +21,6 @@ export default function Home() {
       <Process />
       <Reviews />
       <Contacts />
-      <Footer />
     </main>
   )
 }

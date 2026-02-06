@@ -3,7 +3,7 @@ import Link from "next/link"
 
 export function Footer() {
   return (
-    <footer className="bg-background border-t border-border py-12">
+    <footer className="border-t border-border py-12">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
           {/* Logo - fixed size, no shrinking */}
