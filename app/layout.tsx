@@ -2,6 +2,7 @@ import React from "react"
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { BackgroundBeams } from "@/components/background-beams"
 
 const _inter = Inter({ subsets: ["latin", "cyrillic"] });
 
@@ -36,6 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans antialiased`}>
+        <BackgroundBeams />
         {children}
       </body>
     </html>
