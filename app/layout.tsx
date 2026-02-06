@@ -11,21 +11,7 @@ export const metadata: Metadata = {
   description: 'Автомобили под заказ с аукционов Японии, Кореи и Китая. Выгода от 300 000 рублей. Полное сопровождение сделки.',
   generator: 'v0.app',
   icons: {
-    icon: [
-      {
-        url: '/bgauto/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/bgauto/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/bgauto/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/bgauto/apple-icon.png',
+    icon: '/bgauto/images/favicon.png',
   },
 }
 

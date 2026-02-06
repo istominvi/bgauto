@@ -26,7 +26,7 @@ export function Header() {
           {/* Logo - fixed size, no shrinking */}
           <Link href="/" className="flex-shrink-0">
             <Image
-              src="/bgauto/images/1-2.png"
+              src="/bgauto/images/logo_header.png"
               alt="BG AUTO"
               width={140}
               height={50}
