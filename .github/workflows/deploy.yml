@@ -51,6 +51,9 @@ jobs:
       - name: Fetch cases data from Google Sheets
         run: node scripts/fetch-cases.js
 
+      - name: Fetch reviews data from Google Sheets
+        run: node scripts/fetch-reviews.js
+
       - name: Build
         run: pnpm build
 
