@@ -68,7 +68,7 @@ const reasons = [
 
 export function Contacts() {
   return (
-    <section id="contacts" className="py-20 md:py-32 bg-secondary/30">
+    <section id="contacts" className="py-20 md:py-32">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">

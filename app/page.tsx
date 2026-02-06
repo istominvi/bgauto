@@ -1,5 +1,3 @@
-import { Header } from "@/components/header"
-import { BackgroundBeams } from "@/components/background-beams"
 import { Hero } from "@/components/hero"
 import { About } from "@/components/about"
 import { Cases } from "@/components/cases"
@@ -12,9 +10,7 @@ import { Footer } from "@/components/footer"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background relative">
-      <BackgroundBeams />
-      <Header />
+    <main className="min-h-screen relative">
       <Hero />
       <About />
       <Cases />
@@ -23,7 +19,6 @@ export default function Home() {
       <Process />
       <Reviews />
       <Contacts />
-      <Footer />
     </main>
   )
 }

@@ -15,7 +15,7 @@ export function BackgroundBeams() {
   const [beams, setBeams] = useState<Beam[]>([])
 
   useEffect(() => {
-    const beamCount = 6 // Was 4, +50% = 6
+    const beamCount = 12 // Increased for better visibility
     const newBeams = Array.from({ length: beamCount }).map((_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
@@ -29,11 +29,11 @@ export function BackgroundBeams() {
 
   return (
     <div className="fixed inset-0 z-[-1] overflow-hidden pointer-events-none bg-background">
-      <div className="absolute inset-0 opacity-40">
+      <div className="absolute inset-0 opacity-60">
         {beams.map((beam) => (
           <div
             key={beam.id}
-            className="absolute w-[1.5px] h-[150%] bg-gradient-to-b from-transparent via-primary to-transparent animate-bg-beam-float shadow-[0_0_20px_rgba(234,40,40,0.8)]"
+            className="absolute w-[2px] h-[150%] bg-gradient-to-b from-transparent via-primary to-transparent animate-bg-beam-float shadow-[0_0_25px_rgba(234,40,40,0.9)]"
             style={
               {
                 left: beam.left,

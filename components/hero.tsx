@@ -42,7 +42,7 @@ export function Hero() {
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 leading-relaxed">
-            Ваш идеальный автомобиль с аукционов на 20-30% дешевле рынка РФ
+            Ваш автомобиль с аукционов на 20-30% дешевле рынка
             <br className="hidden md:block" />
             <span className="text-foreground font-semibold">Выгода от 300 000 рублей</span>
           </p>
@@ -91,13 +91,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground">
-        <span className="text-xs uppercase tracking-widest">Узнать больше</span>
-        <div className="w-6 h-10 border-2 border-muted-foreground/50 rounded-full flex items-start justify-center p-1">
-          <div className="w-1.5 h-3 bg-primary rounded-full animate-bounce" />
-        </div>
-      </div>
     </section>
   )
 }

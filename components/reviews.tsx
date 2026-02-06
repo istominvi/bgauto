@@ -46,7 +46,7 @@ export function Reviews() {
   }
 
   return (
-    <section id="reviews" className="py-20 md:py-32 bg-secondary/30">
+    <section id="reviews" className="py-20 md:py-32">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
