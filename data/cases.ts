@@ -2,7 +2,7 @@
 export const cases = [
   {
     "id": 1,
-    "image": "https://drive.google.com/uc?id=1EL9yaUdWfO71sdMi5iO3HqfOMJOwUVek",
+    "image": "/bgauto/images/cases/case-1.jpg",
     "title": "Toyota RAV4",
     "year": 2020,
     "client": "Алексею из Улан-Удэ",
@@ -16,7 +16,7 @@ export const cases = [
   },
   {
     "id": 2,
-    "image": "https://drive.google.com/uc?id=1viMLU1RFTyxjhY871IRmZ_rTBFIvozDN",
+    "image": "/bgauto/images/cases/case-2.jpg",
     "title": "Lexus RX 350",
     "year": 2022,
     "client": "клиенту из Читы",

@@ -75,25 +75,52 @@ function downloadCsv(url) {
   });
 }
 
-function getGoogleDriveDirectLink(url) {
-  if (!url) return '/placeholder.svg';
-  if (url.includes('drive.google.com') || url.includes('drive.usercontent.google.com')) {
+function getGoogleDriveDownloadUrl(url) {
+  if (!url) return null;
+  if (url.includes('drive.google.com') || url.includes('drive.usercontent.google.com') || url.includes('lh3.googleusercontent.com')) {
     try {
       // Handle /d/ID/ format
       const dMatch = url.match(/\/d\/([^/?]+)/);
       if (dMatch && dMatch[1]) {
-        return `https://drive.google.com/uc?id=${dMatch[1]}`;
+        return `https://drive.google.com/uc?export=download&id=${dMatch[1]}`;
       }
       // Handle ?id=ID format
       const idMatch = url.match(/[?&]id=([^&]+)/);
       if (idMatch && idMatch[1]) {
-        return `https://drive.google.com/uc?id=${idMatch[1]}`;
+        return `https://drive.google.com/uc?export=download&id=${idMatch[1]}`;
+      }
+      // Handle lh3.googleusercontent.com/d/ID
+      if (url.includes('lh3.googleusercontent.com/d/')) {
+        const id = url.split('/d/')[1];
+        if (id) return `https://drive.google.com/uc?export=download&id=${id}`;
       }
     } catch (e) {
       console.warn('Failed to parse Google Drive URL:', url);
     }
   }
   return url;
+}
+
+function downloadFile(url, dest) {
+  return new Promise((resolve, reject) => {
+    https.get(url, (response) => {
+      if (response.statusCode >= 300 && response.statusCode < 400 && response.headers.location) {
+        return resolve(downloadFile(response.headers.location, dest));
+      }
+
+      if (response.statusCode !== 200) {
+        return reject(new Error(`Failed to download file: ${response.statusCode} for ${url}`));
+      }
+
+      const file = fs.createWriteStream(dest);
+      response.pipe(file);
+      file.on('finish', () => {
+        file.close(resolve);
+      });
+    }).on('error', (error) => {
+      fs.unlink(dest, () => reject(error));
+    });
+  });
 }
 
 async function fetchAndSaveCases() {
@@ -104,11 +131,21 @@ async function fetchAndSaveCases() {
     console.log('Converting CSV to JSON...');
     const rawData = convertCsvToJson(csvContent);
     
-    const casesData = rawData.map((row, idx) => {
-      // Mapping from Russian or English headers
+    const imagesDir = path.join(__dirname, '../public/images/cases');
+    if (!fs.existsSync(imagesDir)) {
+      fs.mkdirSync(imagesDir, { recursive: true });
+    }
+
+    const casesData = [];
+
+    for (let i = 0; i < rawData.length; i++) {
+      const row = rawData[i];
       const rawTitle = row['Автомобиль'] || row['title'] || '';
+      if (!rawTitle) continue;
+
       const carInfo = rawTitle.split(',');
       const title = carInfo[0] ? carInfo[0].trim() : '';
+      const id = i + 1;
 
       let year = 0;
       if (carInfo[1]) {
@@ -123,16 +160,31 @@ async function fetchAndSaveCases() {
       }
 
       let price = row['Стоимость'] || row['Цена'] || row['price'] || '';
-      // Remove all non-digit characters to normalize
       const numericPrice = price.replace(/\D/g, '');
       if (numericPrice) {
-        // Format with spaces for Russian standard: 2320000 -> 2 320 000
         price = parseInt(numericPrice).toLocaleString('ru-RU').replace(/\s/g, ' ');
       }
 
-      return {
-        id: idx + 1,
-        image: getGoogleDriveDirectLink(row['Фото'] || row['image']),
+      // Handle image download
+      const rawImageUrl = row['Фото'] || row['image'];
+      const downloadUrl = getGoogleDriveDownloadUrl(rawImageUrl);
+      let localImagePath = '/placeholder.svg';
+
+      if (downloadUrl) {
+        const fileName = `case-${id}.jpg`;
+        const destPath = path.join(imagesDir, fileName);
+        console.log(`Downloading image for case ${id}: ${downloadUrl} -> ${destPath}`);
+        try {
+          await downloadFile(downloadUrl, destPath);
+          localImagePath = `/bgauto/images/cases/${fileName}`;
+        } catch (err) {
+          console.error(`Failed to download image for case ${id}:`, err.message);
+        }
+      }
+
+      casesData.push({
+        id: id,
+        image: localImagePath,
         title: title,
         year: year,
         client: client,
@@ -143,8 +195,8 @@ async function fetchAndSaveCases() {
         priceNote: row['priceNote'] || '',
         country: row['Страна'] || row['country'] || '',
         date: row['Дата'] || row['date'] || '',
-      };
-    }).filter(item => item.title !== '');
+      });
+    }
     
     const outputDir = path.join(__dirname, '../data');
     if (!fs.existsSync(outputDir)) {
