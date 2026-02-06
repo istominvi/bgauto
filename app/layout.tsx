@@ -2,7 +2,7 @@ import React from "react"
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { BackgroundBeams } from "@/components/background-beams"
+import { GlobalBackground } from "@/components/global-background"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="ru" className="scroll-smooth dark">
       <body className={`font-sans antialiased`}>
-        <BackgroundBeams />
+        <GlobalBackground />
         <Header />
         {children}
         <Footer />
